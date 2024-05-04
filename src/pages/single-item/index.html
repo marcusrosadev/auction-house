@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Welcome to BidBlast homepage.">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="/src/js/main.js" defer type="module"></script>
+    <title>Homepage|BidBlast</title>
+  </head>
+
+  <body>
+    <!--------------------------- NAVBAR ----------------------------->
+    <nav class="navbar navbar-expand-lg p-lg-4 navbar-light bg-primary">
+      <div class="container-fluid">
+        <!----------------------- Logo -------------------------------->
+        <a class="navbar-brand dm-sans-700 text-white" href="/">BidBlast</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!------------------------- Hamburger Menu ------------------------>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-lg-none">
+            <li class="nav-item">
+              <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">About us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Contact us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/src/pages/listings/">Listings</a>
+            </li>
+          </ul>
+          <!------------------- Login Button --------------------->
+          <button id="" class="btn btn-secondary mb-2 mb-lg-0 me-2 px-lg-4 login-modal-btn" data-bs-toggle="modal"  data-bs-target="#loginModal" type="button">Login</button>
+          <!------------------- Login Container --------------------->
+          <div id="login-modal-container"></div>
+
+          <!------------------- Register Button --------------------->
+          <button id="" class="btn btn-outline-secondary px-lg-4 register-modal-btn" data-bs-toggle="modal"  data-bs-target="#registerModal" type="button">Register</button>
+
+          <!------------------- Logout Button --------------------->
+          <button id="" class="btn btn-outline-secondary px-lg-4 logout-btn" type="button">Logout</button>
+          <!------------------- Register Container --------------------->
+          <div id="register-modal-container"></div>
+        </div>
+      </div>
+    </nav>
+    <!--------------------------- SUB-NAVBAR ----------------------------->
+    <nav class="navbar d-none d-lg-block navbar-expand-lg p-lg-3 navbar-light bg-white">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link link-primary active" aria-current="page" href="/index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-primary" href="#">About us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-primary" href="#">Contact us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-primary" href="/src/pages/listings/">Listings</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="container mt-5 mb-5">
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="..." class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!------------------------------- FOOTER --------------------------------->
+    <div class="footer bg-success">
+      <div class="container">
+        <p class="text-center p-4 text-white">BidBlast © 2024. All rights reserved.</p>
+      </div>
+    </div>
+    
+  </body>
+</html>

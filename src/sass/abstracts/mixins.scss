@@ -1,0 +1,21 @@
+@import 'bootstrap/scss/bootstrap';
+
+@mixin media-width($size-sm, $size-md, $size-lg) {
+  width: $size-sm;
+  @include media-breakpoint-up(md) {
+    width: $size-md;
+  }
+  @include media-breakpoint-up(lg) {
+    width: $size-lg;
+  }
+}
+
+@mixin media-height($height-sm, $height-md, $height-lg) {
+  height: $height-sm;
+  @include media-breakpoint-up(md) {
+    height: $height-md;
+  }
+  @include media-breakpoint-up(lg) {
+    height: $height-lg;
+  }
+}
