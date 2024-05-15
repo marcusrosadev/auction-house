@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Welcome to BidBlast homepage." />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+    <script src="./src/js/main.js" defer type="module"></script>
+    <title>Homepage|BidBlast</title>
+  </head>
+
+  <body>
+    <!--------------------------- NAVBAR ----------------------------->
+    <nav class="navbar navbar-expand-lg p-lg-4 navbar-light bg-primary">
+      <div class="container-fluid">
+        <!----------------------- Logo -------------------------------->
+        <a class="navbar-brand dm-sans-700 text-white" href="/">BidBlast</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!------------------------- Hamburger Menu ------------------------>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-lg-none">
+            <li class="nav-item">
+              <a class="nav-link active text-white" aria-current="page" href="/"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">New listing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Contact us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/src/pages/listings/"
+                >Listings</a
+              >
+            </li>
+          </ul>
+          <!------------------- Login Button --------------------->
+          <button
+            id=""
+            class="btn btn-secondary mb-2 mb-lg-0 me-2 px-lg-4 login-modal-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#loginModal"
+            type="button"
+          >
+            Login
+          </button>
+          <!------------------- Login Container --------------------->
+          <div id="login-modal-container"></div>
+
+          <!------------------- Register Button --------------------->
+          <button
+            id=""
+            class="btn btn-outline-secondary px-lg-4 register-modal-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#registerModal"
+            type="button"
+          >
+            Register
+          </button>
+
+          <!------------------- Profile Button --------------------->
+          <a href="/src/pages/profile/"
+            ><button
+              id=""
+              class="btn btn-secondary px-lg-4 profile-btn me-2"
+              type="button"
+            >
+              Profile
+            </button></a
+          >
+
+          <!------------------- Logout Button --------------------->
+          <button
+            id=""
+            class="btn btn-outline-secondary px-lg-4 logout-btn"
+            type="button"
+          >
+            Logout
+          </button>
+          <!------------------- Register Container --------------------->
+          <div id="register-modal-container"></div>
+        </div>
+      </div>
+    </nav>
+    <!--------------------------- SUB-NAVBAR ----------------------------->
+    <nav
+      class="navbar d-none d-lg-block navbar-expand-lg p-lg-3 navbar-light bg-white"
+    >
+      <div class="container-fluid">
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link link-primary active"
+                aria-current="page"
+                href="/"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-primary" href="#">New listing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-primary" href="#">Contact us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-primary" href="/src/pages/listings/"
+                >Listings</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--------------------------- HERO-SECTION ----------------------------->
+    <div class="hero-section align-content-end img-fluid">
+      <div class="blur position-relative">
+        <!------------------------- Search Bar ------------------------>
+        <form class="d-flex position-absolute top-40 start-10">
+          <div class="col-sm-8 col-md-12">
+            <input
+              class="form-control me-2"
+              id="search"
+              type="search"
+              placeholder="Search for..."
+              aria-label="Search"
+            />
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-primary ms-2 px-lg-4" type="submit">
+              Search
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!--------------------------- ICONS ----------------------------->
+    <div class="container-fluid bg-secondary pb-5 text-success">
+      <div class="row">
+        <div class="col text-center my-3 my-md-5">
+          <h2>Categories</h2>
+        </div>
+      </div>
+      <!------------------------- Icons First Row ------------------------>
+      <div class="row text-center mt-3">
+        <div class="col">
+          <i class="bi bi-smartwatch category-icon"></i>
+          <p>Fashion</p>
+        </div>
+        <div class="col">
+          <i class="bi bi-lamp category-icon"></i>
+          <p>Furniture</p>
+        </div>
+        <div class="col">
+          <i class="bi bi-phone category-icon"></i>
+          <p>Electronics</p>
+        </div>
+        <div class="col">
+          <i class="bi bi-book category-icon"></i>
+          <p>Books</p>
+        </div>
+      </div>
+      <!------------------------- Icons Second Row ------------------------>
+      <div class="row text-center mt-3 mb-2 mt-5">
+        <div class="col">
+          <i class="bi bi-smartwatch category-icon"></i>
+          <p>Sport</p>
+        </div>
+        <div class="col">
+          <i class="bi bi-lamp category-icon"></i>
+          <p>Art</p>
+        </div>
+        <div class="col">
+          <i class="bi bi-phone category-icon"></i>
+          <p>Instruments</p>
+        </div>
+        <div class="col">
+          <i class="bi bi-book category-icon"></i>
+          <p>Gardening</p>
+        </div>
+      </div>
+    </div>
+
+    <!--------------------------- BODY-CONTENT ----------------------------->
+    <div class="container mt-4 mt-md-5">
+      <!------------------------- Latest Auctions Row ------------------------>
+      <div class="row pt-3 pt-md-5 text-success">
+        <div class="col">
+          <h2>Latest Auctions</h2>
+        </div>
+      </div>
+
+      <div id="auction-container" class="row auction-container">
+        <!--------------------------- Auction Item---------------------------->
+        <div class="col-md-4 mt-3 mb-3 mb-md-5">
+          <div class="card auction-card">
+            <img
+              src="https://source.unsplash.com/featured/?furniture"
+              class="card-img-top"
+              alt="Furniture"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Shabby Chic Chair</h5>
+              <p class="card-text mb-3">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
+                cum sapiente nemo placeat!
+              </p>
+              <a href="/src/pages/single-post/" class="btn btn-primary"
+                >More info</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!----------------------- Discover Section ------------------------>
+      <div class="row my-5 py-5 justify-content-around bg-secondary">
+        <div class="col-md-6">
+          <img
+            src="/src/assets/img/discover-img-2.avif"
+            class="img-fluid"
+            alt="Designer"
+          />
+        </div>
+        <div class="col-md-5">
+          <h3>Discover how the auction world works.</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque nam
+            sint temporibus eos mollitia saepe accusantium distinctio sapiente?
+            Atque harum ducimus deleniti consequatur eveniet iusto ipsum
+            distinctio, suscipit non ipsam!
+          </p>
+          <a href="#" class="btn btn-primary mt-3">Read more</a>
+        </div>
+      </div>
+
+      <!----------------------- Ending Soon Section ---------------------->
+      <div class="row mt-3 pt-3 pt-md-5 text-success">
+        <div class="col">
+          <h2>Ending Soon</h2>
+        </div>
+      </div>
+      <!----------------------- Ending Soon Row --------------------------->
+      <div class="row ending-soon">
+        <!---------------------- Ending Soon Item ------------------------->
+        <div class="col-md-4 mt-3 mb-3 mb-md-5">
+          <div class="card auction-card">
+            <img
+              src="https://source.unsplash.com/featured/?antiques"
+              class="card-img-top"
+              alt="Antiques"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Vintage Vase Collection</h5>
+              <p class="card-text mb-3">
+                A stunning collection of vintage vases from the 19th century.
+              </p>
+              <a href="#" class="btn btn-primary">More info</a>
+            </div>
+          </div>
+        </div>
+        <!---------------------- Ending Soon Item ------------------------->
+        <div class="col-md-4 mt-3 mb-3 mb-md-5">
+          <div class="card auction-card">
+            <img
+              src="https://source.unsplash.com/featured/?antiques"
+              class="card-img-top"
+              alt="Antiques"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Vintage Vase Collection</h5>
+              <p class="card-text mb-3">
+                A stunning collection of vintage vases from the 19th century.
+              </p>
+              <a href="#" class="btn btn-primary">More info</a>
+            </div>
+          </div>
+        </div>
+        <!---------------------- Ending Soon Item ------------------------->
+        <div class="col-md-4 mt-3 mb-3 mb-md-5">
+          <div class="card auction-card">
+            <img
+              src="https://source.unsplash.com/featured/?antiques"
+              class="card-img-top"
+              alt="Antiques"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Vintage Vase Collection</h5>
+              <p class="card-text mb-3">
+                A stunning collection of vintage vases from the 19th century.
+              </p>
+              <a href="#" class="btn btn-primary">More info</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!------------------------- SUBSCRIBE-SECTION ------------------------->
+    <div class="subscribe-section mt-5">
+      <div class="overlay">
+        <!--------------------- Subscribe Section Text -------------------->
+        <div class="text-center subscribe-media mb-4">
+          <h2>Lorem ipsum dolor sit</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi qui
+            tempora aspernatur eaque? Maxime aliquid esse voluptatum harum enim
+            dolore illum provident, sit culpa, tenetur quidem? Et est nihil
+            laborum.
+          </p>
+        </div>
+
+        <!-------------------------- Subscribe Form ----------------------->
+        <form class="d-flex justify-content-center subscribe-media px-4">
+          <input
+            class="form-control me-2"
+            id="subscribe"
+            type="email"
+            placeholder=" name@example.com"
+            aria-label="email"
+          />
+          <button class="btn btn-outline-light" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <!------------------------------- FOOTER --------------------------------->
+    <div class="footer bg-success">
+      <div class="container">
+        <p class="text-center p-4 text-white">
+          BidBlast © 2024. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

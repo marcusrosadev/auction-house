@@ -1,0 +1,5 @@
+@import '../abstracts/mixins.scss';
+
+.form-size {
+  @include media-width(100%, 45%, 30%);
+}

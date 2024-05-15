@@ -1,0 +1,17 @@
+// @import 'bootstrap/scss/bootstrap';
+
+// Overrides
+@import './vendors/bootstrap.scss';
+
+// Abstracts
+@import './abstracts/typography.scss';
+@import './abstracts/mixins.scss';
+@import './abstracts/variables.scss';
+
+//components
+@import './components/buttons.scss';
+@import './components/icons.scss';
+
+//Pages
+@import './pages/listings.scss';
+@import './pages/home.scss';

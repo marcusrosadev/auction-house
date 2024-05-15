@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Welcome to BidBlast listings item." />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+    <script src="/src/js/main.js" defer type="module"></script>
+    <title>Single-Item|BidBlast</title>
+  </head>
+
+  <body>
+    <!--------------------------- NAVBAR ----------------------------->
+    <nav class="navbar navbar-expand-lg p-lg-4 navbar-light bg-primary">
+      <div class="container-fluid">
+        <!----------------------- Logo -------------------------------->
+        <a class="navbar-brand dm-sans-700 text-white" href="/">BidBlast</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!------------------------- Hamburger Menu ------------------------>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-lg-none">
+            <li class="nav-item">
+              <a class="nav-link active text-white" aria-current="page" href="/"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">New listing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Contact us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="/src/pages/listings/"
+                >Listings</a
+              >
+            </li>
+          </ul>
+          <!------------------- Login Button --------------------->
+          <button
+            id=""
+            class="btn btn-secondary mb-2 mb-lg-0 me-2 px-lg-4 login-modal-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#loginModal"
+            type="button"
+          >
+            Login
+          </button>
+          <!------------------- Login Container --------------------->
+          <div id="login-modal-container"></div>
+
+          <!------------------- Register Button --------------------->
+          <button
+            id=""
+            class="btn btn-outline-secondary px-lg-4 register-modal-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#registerModal"
+            type="button"
+          >
+            Register
+          </button>
+          <!------------------- Profile Button --------------------->
+          <a href="/src/pages/profile/"
+            ><button
+              id=""
+              class="btn btn-secondary px-lg-4 profile-btn me-2"
+              type="button"
+            >
+              Profile
+            </button></a
+          >
+
+          <!------------------- Logout Button --------------------->
+          <button
+            id=""
+            class="btn btn-outline-secondary px-lg-4 logout-btn"
+            type="button"
+          >
+            Logout
+          </button>
+          <!------------------- Register Container --------------------->
+          <div id="register-modal-container"></div>
+        </div>
+      </div>
+    </nav>
+    <!--------------------------- SUB-NAVBAR ----------------------------->
+    <nav
+      class="navbar d-none d-lg-block navbar-expand-lg p-lg-3 navbar-light bg-secondary"
+    >
+      <div class="container-fluid">
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link link-primary active"
+                aria-current="page"
+                href="/index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-primary" href="#">New listing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-primary" href="#">Contact us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-primary" href="/src/pages/listings/"
+                >Listings</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!--------------------------------- Main-body-container ------------------------------->
+    <div class="container mt-5 mb-5">
+      <!-------------------------------- Seller-profile ------------------------------>
+      <div class="row d-flex justify-content-center mb-4">
+        <div class="single-item-media d-flex flex-row">
+          <img
+            class="img-thumbnail object-fit-cover rounded-circle"
+            style="width: 4rem; height: 4rem"
+            src="https://source.unsplash.com/featured/?profile"
+            alt=""
+          />
+          <div class="ps-3 pt-1 d-flex justify-content-between w-100">
+            <div class="w-25">
+              <p class="m-0"><strong>Seller</strong></p>
+              <p>Lucca</p>
+            </div>
+            <!-------------------------------- Edit-btn ------------------------------>
+            <div id="ownerBtns" class="d-flex">
+              <button
+                id="edit-btn"
+                class="btn btn-outline-primary px-lg-4 edit-modal-btn h-75 me-2"
+                data-bs-toggle="modal"
+                data-bs-target="#editModal"
+                type="button"
+              >
+                Edit
+              </button>
+
+              <!--------------------------------- Edit Modal ------------------------>
+              <div
+                class="modal fade"
+                id="editModal"
+                tabindex="-1"
+                aria-labelledby="editModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                      <h5 class="modal-title" id="editModalLabel">BidBlast</h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <!------------------------ Edit form ------------------------>
+                      <form>
+                        <div class="mb-3">
+                          <label for="title" class="form-label">Title</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="title"
+                            placeholder="Listing title"
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <label for="description" class="form-label"
+                            >Description</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="description"
+                            placeholder="Listing description"
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <label for="gallery" class="form-label"
+                            >Image URL</label
+                          >
+                          <input
+                            type="url"
+                            class="form-control"
+                            id="image-url"
+                            placeholder="Image URL"
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <label for="date" class="form-label">Ends at</label>
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="event-date"
+                            placeholder="Choose a date"
+                          />
+                        </div>
+                        <!-------------------------- Update-btn ------------------------->
+                        <button type="submit" class="btn btn-primary px-5">
+                          Update
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-------------------------- Delete-btn ------------------------->
+              <button
+                id="delete-btn"
+                class="btn btn-outline-primary px-lg-4 delete-modal-btn h-75"
+                data-bs-toggle="modal"
+                data-bs-target="#deleteModal"
+                type="button"
+              >
+                Delete
+              </button>
+
+              <div
+                class="modal fade"
+                id="deleteModal"
+                tabindex="-1"
+                aria-labelledby="editModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                      <h5 class="modal-title" id="editModalLabel">BidBlast</h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <p class="mb-4 text-center">
+                        Are you sure that you want to delete this item
+                        permanently?
+                      </p>
+                      <div class="d-flex justify-content-around">
+                        <button
+                          type="submit"
+                          class="btn btn-outline-primary px-5"
+                        >
+                          Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary px-5">
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="auction-container d-flex justify-content-center position-relative"
+      >
+        <div class="card mb-3 single-item-media">
+          <div class="row g-0">
+            <div class="col-md-5">
+              <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner">
+                  <picture class="carousel-item active auction-card">
+                    <img
+                      src="https://source.unsplash.com/featured/?furniture"
+                      class="d-block w-100"
+                      alt="..."
+                    />
+                  </picture>
+
+                  <picture class="carousel-item auction-card">
+                    <img
+                      src="https://source.unsplash.com/featured/?furniture"
+                      class="d-block w-100"
+                      alt="..."
+                    />
+                  </picture>
+
+                  <picture class="carousel-item auction-card">
+                    <img
+                      src="https://source.unsplash.com/featured/?furniture"
+                      class="d-block w-100"
+                      alt="..."
+                    />
+                  </picture>
+                </div>
+
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#carouselExample"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#carouselExample"
+                  data-bs-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="col-md-7">
+              <div
+                class="card-body h-100 d-flex flex-column position-relative p-0"
+              >
+                <article class="d-flex flex-column h-100 py-5 px-4 px-lg-5">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="py-1">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                  <button
+                    class="btn btn-success text-white px-lg-4 login-modal-btn btn-bid mb-5"
+                    data-bs-toggle="modal"
+                    data-bs-target="#loginModal"
+                    type="button"
+                  >
+                    Bid Now
+                  </button>
+                </article>
+
+                <div class="py-3 bg-secondary position-absolute bottom-0 w-100">
+                  <div
+                    class="d-flex justify-content-between align-items-center px-4 px-lg-5"
+                  >
+                    <p class="m-0">Bids: 0</p>
+                    <small class="fst-italic">End date: 07/10/2026</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-4 mb-4">
+      <!-- Header Text -->
+      <div class="row">
+        <div class="col text-center">
+          <h4>Bid History</h4>
+        </div>
+      </div>
+
+      <!-- Cards for Stats -->
+      <div class="row justify-content-center mt-3">
+        <!-- First Stat Card -->
+        <div class="col-auto mb-3">
+          <div class="card">
+            <div class="row g-0 align-items-center justify-content-center">
+              <div class="col-md-5 text-center">
+                <img
+                  src="https://source.unsplash.com/featured/?profile"
+                  class="object-fit-cover ms-md-2 mt-2 mt-md-0"
+                  alt="Happy customer"
+                  style="width: 3rem; height: 3rem"
+                />
+              </div>
+              <div class="col-md-7">
+                <div class="card-body text-center p-2">
+                  <p class="card-title text-nowrap">Maik</p>
+                  <p class="card-text"><strong>$250</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second Stat Card -->
+        <div class="col-auto mb-3">
+          <div class="card">
+            <div class="row g-0 align-items-center justify-content-center">
+              <div class="col-md-5 text-center">
+                <img
+                  src="https://source.unsplash.com/featured/?profile"
+                  class="object-fit-cover ms-md-2 mt-2 mt-md-0"
+                  alt="Happy customer"
+                  style="width: 3rem; height: 3rem"
+                />
+              </div>
+              <div class="col-md-7">
+                <div class="card-body text-center p-2">
+                  <p class="card-title text-nowrap">Maik</p>
+                  <p class="card-text"><strong>$250</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Third Stat Card -->
+        <div class="col-auto mb-3">
+          <div class="card">
+            <div class="row g-0 align-items-center justify-content-center">
+              <div class="col-md-5 text-center">
+                <img
+                  src="https://source.unsplash.com/featured/?profile"
+                  class="object-fit-cover ms-md-2 mt-2 mt-md-0"
+                  alt="Happy customer"
+                  style="width: 3rem; height: 3rem"
+                />
+              </div>
+              <div class="col-md-7">
+                <div class="card-body text-center p-2">
+                  <p class="card-title text-nowrap">Maik</p>
+                  <p class="card-text"><strong>$250</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!------------------------------- FOOTER --------------------------------->
+    <div class="footer bg-success">
+      <div class="container">
+        <p class="text-center p-4 text-white">
+          BidBlast © 2024. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

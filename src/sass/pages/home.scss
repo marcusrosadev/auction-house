@@ -1,0 +1,57 @@
+@import '../abstracts/mixins.scss';
+
+.hero-section {
+  background: url('https://source.unsplash.com/featured/?interior') no-repeat
+    center center;
+  background-size: cover;
+  @include media-height(25rem, 35rem, 40rem);
+}
+
+.subscribe-media {
+  @include media-width(90%, 50%, 50%);
+}
+
+.auction-card img {
+  max-height: 300px;
+  min-height: 300px;
+  object-fit: cover;
+}
+
+.subscribe-section {
+  background: url('../assets/img/Vector.png') no-repeat center center;
+  background-size: cover;
+  height: 23rem;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.187);
+  color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.blur {
+  backdrop-filter: blur(7px);
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  height: 8rem;
+}
+
+p {
+  margin: auto;
+}
+
+.card-text {
+  @include single-line;
+}
+
+.single-item-media {
+  @include media-width(100%, 90%, 75%);
+}
+
+.btn-bid {
+  @include media-width(100%, 60%, 40%);
+}
