@@ -29,7 +29,7 @@ export const ListingsServices = {
 
   async getListingById(listingId) {
     const response = await fetchWithHeaders(
-      `${BASE_API_URL}/auction/listings/${listingId}`,
+      `${BASE_API_URL}/auction/listings/${listingId}?_seller=true&_bids=true`,
       'GET',
     );
     return response.data;

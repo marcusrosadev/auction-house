@@ -35,7 +35,7 @@ export const AuthServices = {
   },
 
   getCurrentUser: () => {
-    return storage.getItem('currentUser');
+    return storage.getItem('user');
   },
 
   getAccessToken: () => {

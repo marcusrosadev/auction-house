@@ -41,30 +41,35 @@ function updateNavigation() {
   nextPage.classList.toggle('disabled', currentPage === 10); // Assume 10 is the last page for example
 }
 
-prevPage.addEventListener('click', () => {
-  if (currentPage > 1) {
-    currentPage--;
-    displayAllListings(currentPage);
-  }
-});
-
-nextPage.addEventListener('click', () => {
-  if (currentPage < 10) {
-    // Assume 10 is the last page for example
-    currentPage++;
-    displayAllListings(currentPage);
-  }
-});
-
-pageNumbers.forEach((page) => {
-  page.addEventListener('click', (e) => {
-    const selectedPage = parseInt(e.target.textContent);
-    if (selectedPage !== currentPage) {
-      currentPage = selectedPage;
+if(prevPage) {
+  prevPage.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
       displayAllListings(currentPage);
     }
   });
-});
+}
+
+if (nextPage) {
+  nextPage.addEventListener('click', () => {
+    if (currentPage < 10) {
+      currentPage++;
+      displayAllListings(currentPage);
+    }
+  });
+}
+
+if(pageNumbers) {
+  pageNumbers.forEach((page) => {
+    page.addEventListener('click', (e) => {
+      const selectedPage = parseInt(e.target.textContent);
+      if (selectedPage !== currentPage) {
+        currentPage = selectedPage;
+        displayAllListings(currentPage);
+      }
+    });
+  });
+}
 
 document.addEventListener('DOMContentLoaded', () =>
   displayAllListings(currentPage),
