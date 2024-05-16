@@ -51,4 +51,15 @@ export const ListingsServices = {
     );
     return response.data;
   },
+
+  async bidOnListing(listingId, amount) {
+    const response = await fetchWithHeaders(
+      `${BASE_API_URL}/auction/listings/${listingId}/bids`,
+      'POST',
+      {
+        amount
+      }
+    );
+    return response.data;
+  }
 };

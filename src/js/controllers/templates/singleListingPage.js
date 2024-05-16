@@ -2,23 +2,25 @@ import timestampConverter from '../../utils/functions/timestampConverter';
 import { AuthServices } from '../../services/AuthServices.js';
 
 export function createSingleListingPage(listing) {
-  console.log("listing");
   console.log(listing);
-
   // Seller details
   const sellerAvatarUrl = listing.seller.avatar.url;
-  const sellerName = listing.seller.name;
+  const sellerName = listing?.seller?.name ?? '';
 
   // Item details
   const title = listing.title;
-  const description = listing.description || "No description available.";
+  const description = listing.description || 'No description available.';
   const bidsCount = listing._count.bids;
-  const endDate = timestampConverter(listing.endsAt); 
+  const endDate = timestampConverter(listing.endsAt);
 
-  const images = listing.media.length > 0 ? listing.media : ["https://source.unsplash.com/featured/?item"];
+  const images =
+    listing.media.length > 0
+      ? listing.media
+      : ['https://source.unsplash.com/featured/?item'];
 
   const currentUser = AuthServices.getCurrentUser();
-  console.log('currentUser', currentUser)
+  const currentUserName = currentUser?.name ?? '';
+  const currentUserEmail = currentUser?.email ?? '';
   return `
     <!-------------------------------- Seller-profile ------------------------------>
     <div class="row d-flex justify-content-center mb-4">
@@ -35,8 +37,53 @@ export function createSingleListingPage(listing) {
             <p>${sellerName}</p>
           </div>
 
+        <div
+            class="modal fade"
+            id="bidModal"
+            tabindex="-1"
+            aria-labelledby="edit"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                  <h5 class="modal-title" id="edit">BidBlast</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <!------------------------ Edit form ------------------------>
+                  <form id="bidForm">
+                    <div class="mb-3">
+                      <label for="amount" class="form-label"
+                        >Bid Amount</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control amount-input"
+                        id="amount"
+                        placeholder="$500"
+                      />
+                    </div>
+                    <!-------------------------- Update-btn ------------------------->
+                    <button type="submit" class="btn btn-primary px-5" id="finishBidBtn">
+                      Finish Bid
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
           ${
-            (listing.seller.name === currentUser.name) && (listing.seller.email === currentUser.email) ? (`
+            listing.seller.name === currentUserName &&
+            listing.seller.email === currentUserEmail
+              ? `
               <div id="ownerBtns" class="d-flex">
               <button
                 id="edit-btn"
@@ -169,7 +216,8 @@ export function createSingleListingPage(listing) {
                 </div>
               </div>
             </div>
-            `) : ''
+            `
+              : ''
           }
           
         </div>
@@ -184,7 +232,9 @@ export function createSingleListingPage(listing) {
           <div class="col-md-5">
             <div id="carouselExample" class="carousel slide">
               <div class="carousel-inner">
-                ${images.map((img, index) => `
+                ${images
+                  .map(
+                    (img, index) => `
                   <picture class="carousel-item ${index === 0 ? 'active' : ''} auction-card">
                     <img
                       src="${img.url}"
@@ -192,12 +242,14 @@ export function createSingleListingPage(listing) {
                       alt="..."
                     />
                   </picture>
-                `).join('')}
+                `,
+                  )
+                  .join('')}
               </div>
               
               ${
-                images.length > 1 ? (
-                  `
+                images.length > 1
+                  ? `
                     <button
                       class="carousel-control-prev"
                       type="button"
@@ -225,7 +277,8 @@ export function createSingleListingPage(listing) {
                     </button>
                   </div>
                 </div>
-                `) : ''
+                `
+                  : ''
               }
             </div>
           </div>
@@ -238,17 +291,30 @@ export function createSingleListingPage(listing) {
                 <p class="my-auto text-start m-0">
                   ${description}
                 </p>
-                <button
-                  class="btn btn-success text-white px-lg-4 login-modal-btn btn-bid mb-5"
-                  data-bs-toggle="modal"
-                  data-bs-target="#loginModal"
-                  type="button"
-                  id="bidButton"
-                >
-                  Bid Now
-                </button>
+                ${
+                  currentUserName ? `
+                    <button
+                      class="btn btn-success text-white px-lg-4 bid-modal-btn mb-5"
+                      data-bs-toggle="modal"
+                      data-bs-target="#bidModal"
+                      type="button"
+                      id="bidButton"
+                    >
+                      Bid Now
+                    </button>
+                  ` : `
+                    <button
+                      class="btn btn-success text-white px-lg-4 login-modal-btn mb-5"
+                      data-bs-toggle="modal"
+                      data-bs-target="#loginModal"
+                      type="button"
+                    >
+                      Bid Now
+                    </button>
+                  `
+                }
               </article>
-
+                
               <div class="py-3 bg-secondary position-absolute bottom-0 w-100">
                 <div
                   class="d-flex justify-content-between align-items-center px-4 px-lg-5"

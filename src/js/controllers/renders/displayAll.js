@@ -41,7 +41,7 @@ function updateNavigation() {
   nextPage.classList.toggle('disabled', currentPage === 10); // Assume 10 is the last page for example
 }
 
-if(prevPage) {
+if (prevPage) {
   prevPage.addEventListener('click', () => {
     if (currentPage > 1) {
       currentPage--;
@@ -59,7 +59,7 @@ if (nextPage) {
   });
 }
 
-if(pageNumbers) {
+if (pageNumbers) {
   pageNumbers.forEach((page) => {
     page.addEventListener('click', (e) => {
       const selectedPage = parseInt(e.target.textContent);
