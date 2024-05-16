@@ -45,4 +45,14 @@ export const AuthServices = {
   isAuthenticated: () => {
     return !!AuthServices.getAccessToken();
   },
+
+  async getLoggedProfile(name) {
+    console.log(name)
+    const response = await fetchWithHeaders(
+      `${BASE_API_URL}/auction/profiles/${name}`,
+      'GET',
+    );
+    currentUser(response.data);
+    return response;
+  }
 };

@@ -57,9 +57,9 @@ export const ListingsServices = {
       `${BASE_API_URL}/auction/listings/${listingId}/bids`,
       'POST',
       {
-        amount
-      }
+        amount,
+      },
     );
     return response.data;
-  }
+  },
 };

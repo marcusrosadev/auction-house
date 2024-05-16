@@ -20,7 +20,6 @@ export function updateButtonVisibility() {
       bidButton.removeAttribute('data-bs-toggle');
       bidButton.classList.add('bidButton');
     }
-    console.log(document.querySelector('#edit-btn'));
     document.querySelector('#edit-btn') &&
       document.querySelector('#edit-btn').classList.remove('d-none');
 

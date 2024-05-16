@@ -16,7 +16,7 @@ export function createSingleListingPage(listing) {
   const images =
     listing.media.length > 0
       ? listing.media
-      : ['https://source.unsplash.com/featured/?item'];
+      : ['https://placehold.co/300x300'];
 
   const currentUser = AuthServices.getCurrentUser();
   const currentUserName = currentUser?.name ?? '';
@@ -237,7 +237,7 @@ export function createSingleListingPage(listing) {
                     (img, index) => `
                   <picture class="carousel-item ${index === 0 ? 'active' : ''} auction-card">
                     <img
-                      src="${img.url}"
+                      src="${img.url ?? img}"
                       class="d-block w-100"
                       alt="..."
                     />

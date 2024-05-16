@@ -3,8 +3,6 @@ import { API_KEY } from '../../config/config';
 
 export const fetchWithHeaders = async (url, method, body) => {
   const accessToken = storage.getItem('accessToken');
-  console.log(accessToken)
-  console.log(API_KEY)
 
   const headers = {
     'Content-Type': 'application/json',
