@@ -34,5 +34,5 @@ export function updateButtonVisibility() {
 document.querySelector('.logout-btn').addEventListener('click', function () {
   localStorage.clear();
   updateButtonVisibility();
-  window.location.reload();
+  window.location.href = '/';
 });

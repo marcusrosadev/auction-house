@@ -26,6 +26,11 @@
     "bootstrap": "^5.3.3",
     "sass": "^1.75.0"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.js": [
       "prettier --write",

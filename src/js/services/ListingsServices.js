@@ -69,5 +69,5 @@ export const ListingsServices = {
       'GET',
     );
     return response.data;
-  }
+  },
 };

@@ -1,7 +1,7 @@
 import timestampConverter from '../../utils/functions/timestampConverter';
 import { AuthServices } from '../../services/AuthServices.js';
 
-export function createSingleListingPage(listing) {
+export async function createSingleListingPage(listing) {
   console.log(listing);
   // Seller details
   const sellerAvatarUrl = listing.seller.avatar.url;
@@ -205,7 +205,7 @@ export function createSingleListingPage(listing) {
                         >
                           Cancel
                         </button>
-                        <button type="submit" class="btn btn-primary px-5">
+                        <button type="submit" class="btn btn-primary px-5 delete-listing-btn">
                           Delete
                         </button>
                       </div>

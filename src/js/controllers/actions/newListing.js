@@ -23,9 +23,7 @@ export async function newListingController() {
   // bannerInput.value = loggedProfile?.banner.url ?? '';
 
   newListingForm.querySelector('button').addEventListener('click', async () => {
-    if (
-      !title && !endsAt
-    ) {
+    if (!title && !endsAt) {
       alert('Create a title and set an end date!');
       return;
     }
@@ -33,12 +31,14 @@ export async function newListingController() {
     const newListingData = {
       title: title.value ?? '',
       description: description.value ?? '',
-      media: image.value ? [
-        {
-          url: image.value,
-          alt: 'Listing Image'
-        }
-      ] : [],
+      media: image.value
+        ? [
+            {
+              url: image.value,
+              alt: 'Listing Image',
+            },
+          ]
+        : [],
       endsAt: endsAt.value ?? new Date(),
     };
 

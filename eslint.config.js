@@ -10,6 +10,9 @@ export default [
       './dist',
       // ... any additional patterns to ignore
     ],
+    rules: {
+      'constructor-super': 'off',
+    },
   },
   pluginJs.configs.recommended,
 ];

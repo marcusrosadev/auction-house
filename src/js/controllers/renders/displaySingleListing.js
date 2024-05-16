@@ -1,4 +1,6 @@
+import { AuthServices } from '../../services/AuthServices';
 import { ListingsServices } from '../../services/ListingsServices';
+import { deleteListingController } from '../actions/deleteListing';
 import { createSingleListingPage } from '../templates/singleListingPage';
 
 const singleListingContainer = document.querySelector(
@@ -9,12 +11,17 @@ async function displaySingleListing(id) {
   if (!singleListingContainer) return;
 
   singleListingContainer.innerHTML = '';
+  const currentUser = AuthServices.getCurrentUser();
 
   try {
     const listings = await ListingsServices.getListingById(id);
     if (listings) {
-      const singleListingHtml = createSingleListingPage(listings);
+      const singleListingHtml = await createSingleListingPage(listings);
       singleListingContainer.innerHTML = singleListingHtml;
+
+      if (listings.seller.name === currentUser.name) {
+        deleteListingController(listings);
+      }
     }
   } catch (error) {
     console.error('Error displaying single listing:', error);
