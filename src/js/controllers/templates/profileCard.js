@@ -53,14 +53,22 @@ export function createProfileCard(profile, loggedProfile) {
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-3">
               <button 
                 id="edit-btn"
-                class="btn btn-outline-primary px-lg-4 edit-modal-btn h-75 me-2"
+                class="btn btn-outline-primary px-lg-4 h-75 me-2"
                 data-bs-toggle="modal"
                 data-bs-target="#editModal"
                 type="button"
               >
                 Edit Profile
               </button>
-              <button class="btn btn-secondary">New Listing</button>
+              <button 
+                id="edit-btn"
+                class="btn btn-secondary px-lg-4 h-75 me-2"
+                data-bs-toggle="modal"
+                data-bs-target="#newListingModal"
+                type="button"
+              >
+                New Listing
+              </button>
             </div>
           `
               : ''

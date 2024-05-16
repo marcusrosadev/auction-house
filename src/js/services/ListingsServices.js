@@ -62,4 +62,12 @@ export const ListingsServices = {
     );
     return response.data;
   },
+
+  async listingsByProfile(name) {
+    const response = await fetchWithHeaders(
+      `${BASE_API_URL}/auction/profiles/${name}/listings`,
+      'GET',
+    );
+    return response.data;
+  }
 };

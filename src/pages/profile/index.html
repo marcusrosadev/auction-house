@@ -147,27 +147,7 @@
           <button class="btn fs-5 ms-lg-5">My purchased items</button>
         </div>
         <!--------------------------- Auction Item---------------------------->
-        <div class="col-12 col-md-6 col-lg-4 mt-5 mb-3">
-          <div class="card auction-card">
-            <img
-              src="https://source.unsplash.com/featured/?furniture"
-              class="card-img-top"
-              alt="${imageAlt}"
-            />
-            <div class="card-body relative p-0">
-              <div class="p-2 p-lg-4">
-                <h5 class="card-title">My Listing</h5>
-                <p class="card-text">This is a text description</p>
-                <a href="" class="btn btn-primary mt-3">More Info</a>
-              </div>
-
-              <div class="mt-3 absolute bg-secondary px-2 px-lg-4 py-2 py-lg-3">
-                <p class="card-text mt-2">Bids: 0</p>
-                <small class="fst-italic">End date: 08-10-2024</small>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="col-12 mt-5 mb-3 profile-listings-container w-100"></div>
       </div>
     </div>
 
@@ -195,6 +175,77 @@
                 <input type="text" class="form-control" id="banner" placeholder="Paste your banner url here">
               </div>
               <button type="submit" class="btn btn-primary px-5">Confirm</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="newListingModal"
+      tabindex="-1"
+      aria-labelledby="edit"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title" id="edit">BidBlast</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!------------------------ Edit form ------------------------>
+            <form>
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="title"
+                  placeholder="Listing title"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="description" class="form-label"
+                  >Description</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="description"
+                  placeholder="Listing description"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="gallery" class="form-label"
+                  >Image URL</label
+                >
+                <input
+                  type="url"
+                  class="form-control"
+                  id="image-url"
+                  placeholder="Image URL"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="date" class="form-label">Ends at</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="event-date"
+                  placeholder="Choose a date"
+                />
+              </div>
+              <!-------------------------- Update-btn ------------------------->
+              <button type="submit" class="btn btn-primary px-5">
+                Create
+              </button>
             </form>
           </div>
         </div>
