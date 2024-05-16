@@ -1,10 +1,16 @@
-import timestampConverter from '../../utils/functions/timestampConverter';
-
 export function createProfileCard(profile, loggedProfile) {
-  const avatarUrl = profile.data.avatar ? profile.data.avatar.url : 'https://source.unsplash.com/featured/?profile';
-  const avatarAlt = profile.data.avatar ? profile.data.avatar.alt : 'Default Image';
-  const bannerUrl = profile.data.banner ? profile.data.banner.url : 'https://source.unsplash.com/featured/?landscape';
-  const bannerAlt = profile.data.banner ? profile.data.banner.alt : 'Default Banner';
+  const avatarUrl = profile.data.avatar
+    ? profile.data.avatar.url
+    : 'https://source.unsplash.com/featured/?profile';
+  const avatarAlt = profile.data.avatar
+    ? profile.data.avatar.alt
+    : 'Default Image';
+  const bannerUrl = profile.data.banner
+    ? profile.data.banner.url
+    : 'https://source.unsplash.com/featured/?landscape';
+  const bannerAlt = profile.data.banner
+    ? profile.data.banner.alt
+    : 'Default Banner';
   const name = profile.data.name;
   const email = profile.data.email;
   const bio = profile.data.bio || '';
@@ -31,21 +37,33 @@ export function createProfileCard(profile, loggedProfile) {
 
           <!-- Conditional Rendering for Credits -->
           ${
-            email === loggedProfile.email && name === loggedProfile.name ? `
+            email === loggedProfile.email && name === loggedProfile.name
+              ? `
               <p class="card-text">Credits: ${credits}</p>
-            ` : ''
+            `
+              : ''
           }
           <!-- Listings and Wins -->
           <p class="card-text">Listings: ${listingsCount}, Wins: ${winsCount}</p>
 
           <!-- Action Buttons -->
           ${
-            email === loggedProfile.email && name === loggedProfile.name ? `
+            email === loggedProfile.email && name === loggedProfile.name
+              ? `
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-3">
-              <a href="#" class="btn btn-primary">Edit Profile</a>
-              <a href="#" class="btn btn-secondary">New Listing</a>
+              <button 
+                id="edit-btn"
+                class="btn btn-outline-primary px-lg-4 edit-modal-btn h-75 me-2"
+                data-bs-toggle="modal"
+                data-bs-target="#editModal"
+                type="button"
+              >
+                Edit Profile
+              </button>
+              <button class="btn btn-secondary">New Listing</button>
             </div>
-          ` : ''
+          `
+              : ''
           }
         </div>
       </div>

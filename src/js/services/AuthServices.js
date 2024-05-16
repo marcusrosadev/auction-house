@@ -47,12 +47,20 @@ export const AuthServices = {
   },
 
   async getLoggedProfile(name) {
-    console.log(name)
+    console.log(name);
     const response = await fetchWithHeaders(
       `${BASE_API_URL}/auction/profiles/${name}`,
       'GET',
     );
-    currentUser(response.data);
     return response;
-  }
+  },
+
+  async updateProfile(name, profileData) {
+    const response = await fetchWithHeaders(
+      `${BASE_API_URL}/auction/profiles/${name}`,
+      'PUT',
+      profileData,
+    );
+    return response.data;
+  },
 };

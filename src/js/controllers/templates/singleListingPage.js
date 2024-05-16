@@ -14,9 +14,7 @@ export function createSingleListingPage(listing) {
   const endDate = timestampConverter(listing.endsAt);
 
   const images =
-    listing.media.length > 0
-      ? listing.media
-      : ['https://placehold.co/300x300'];
+    listing.media.length > 0 ? listing.media : ['https://placehold.co/300x300'];
 
   const currentUser = AuthServices.getCurrentUser();
   const currentUserName = currentUser?.name ?? '';
@@ -292,7 +290,8 @@ export function createSingleListingPage(listing) {
                   ${description}
                 </p>
                 ${
-                  currentUserName ? `
+                  currentUserName
+                    ? `
                     <button
                       class="btn btn-success text-white px-lg-4 bid-modal-btn mb-5"
                       data-bs-toggle="modal"
@@ -302,7 +301,8 @@ export function createSingleListingPage(listing) {
                     >
                       Bid Now
                     </button>
-                  ` : `
+                  `
+                    : `
                     <button
                       class="btn btn-success text-white px-lg-4 login-modal-btn mb-5"
                       data-bs-toggle="modal"
