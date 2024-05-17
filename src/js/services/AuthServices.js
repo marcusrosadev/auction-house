@@ -9,13 +9,11 @@ const currentUser = (userData) => {
 
 export const AuthServices = {
   register: async (userData) => {
-    console.log('Request data:', userData);
     const response = await fetchWithHeaders(
       `${BASE_API_URL}/auth/register`,
       'POST',
       userData,
     );
-    console.log('Response received:', response);
     currentUser(response.data);
     return response;
   },
@@ -47,7 +45,6 @@ export const AuthServices = {
   },
 
   async getLoggedProfile(name) {
-    console.log(name);
     const response = await fetchWithHeaders(
       `${BASE_API_URL}/auction/profiles/${name}`,
       'GET',

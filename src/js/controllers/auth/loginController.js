@@ -5,7 +5,6 @@ export function loginController() {
   const loginForm = document.querySelector('#loginModal form');
 
   loginForm.addEventListener('submit', async (event) => {
-    console.log('Login form submitted');
     event.preventDefault();
 
     const credentials = {
@@ -18,7 +17,6 @@ export function loginController() {
       window.location.reload();
       alert('Login Successful');
       updateButtonVisibility();
-      console.log(alert);
     } catch (error) {
       alert('Error during login: ' + error.message);
     } finally {

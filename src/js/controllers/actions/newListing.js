@@ -1,10 +1,6 @@
 // import { AuthServices } from '../../services/AuthServices.js';
 import { ListingsServices } from '../../services/ListingsServices.js';
 
-document.addEventListener('DOMContentLoaded', function () {
-  newListingController();
-});
-
 export async function newListingController() {
   // const currentUser = await AuthServices.getCurrentUser();
   // const loggedProfileGet = await AuthServices.getLoggedProfile(
@@ -22,27 +18,31 @@ export async function newListingController() {
   // avatarInput.value = loggedProfile?.avatar.url ?? '';
   // bannerInput.value = loggedProfile?.banner.url ?? '';
 
-  newListingForm.querySelector('button').addEventListener('click', async () => {
-    if (!title && !endsAt) {
-      alert('Create a title and set an end date!');
-      return;
-    }
+  newListingForm
+    .querySelector('button')
+    .addEventListener('click', async (e) => {
+      e.preventDefault();
 
-    const newListingData = {
-      title: title.value ?? '',
-      description: description.value ?? '',
-      media: image.value
-        ? [
-            {
-              url: image.value,
-              alt: 'Listing Image',
-            },
-          ]
-        : [],
-      endsAt: endsAt.value ?? new Date(),
-    };
+      if (!title && !endsAt) {
+        alert('Create a title and set an end date!');
+        return;
+      }
 
-    await ListingsServices.createListing(newListingData);
-    window.location.reload();
-  });
+      const newListingData = {
+        title: title.value ?? '',
+        description: description.value ?? '',
+        media: image.value
+          ? [
+              {
+                url: image.value,
+                alt: 'Listing Image',
+              },
+            ]
+          : [],
+        endsAt: endsAt.value ?? new Date(),
+      };
+
+      await ListingsServices.createListing(newListingData);
+      window.location.reload();
+    });
 }

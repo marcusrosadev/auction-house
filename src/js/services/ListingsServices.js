@@ -8,6 +8,7 @@ export const ListingsServices = {
       'POST',
       ListingData,
     );
+    console.log(response);
     return response;
   },
 

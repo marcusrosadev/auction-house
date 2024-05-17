@@ -2,7 +2,6 @@ import timestampConverter from '../../utils/functions/timestampConverter';
 import { AuthServices } from '../../services/AuthServices.js';
 
 export async function createSingleListingPage(listing) {
-  console.log(listing);
   // Seller details
   const sellerAvatarUrl = listing.seller.avatar.url;
   const sellerName = listing?.seller?.name ?? '';

@@ -49,9 +49,8 @@ async function displaySingleListing(id) {
       }
 
       try {
-        const response = await ListingsServices.bidOnListing(id, amount);
+        await ListingsServices.bidOnListing(id, amount);
         alert('Bid submitted successfully!');
-        console.log(response);
         displaySingleListing(id);
       } catch (error) {
         console.error('Error submitting bid:', error);

@@ -1,9 +1,5 @@
 import { AuthServices } from '../../services/AuthServices.js';
 
-document.addEventListener('DOMContentLoaded', function () {
-  updateProfileController();
-});
-
 export async function updateProfileController() {
   const currentUser = await AuthServices.getCurrentUser();
   const loggedProfileGet = await AuthServices.getLoggedProfile(
@@ -20,7 +16,9 @@ export async function updateProfileController() {
   avatarInput.value = loggedProfile?.avatar.url ?? '';
   bannerInput.value = loggedProfile?.banner.url ?? '';
 
-  profileForm.querySelector('button').addEventListener('click', async () => {
+  profileForm.querySelector('button').addEventListener('click', async (e) => {
+    e.preventDefault();
+
     if (
       loggedProfile.bio === bioInput.value &&
       loggedProfile.avatar.url === avatarInput.value &&
