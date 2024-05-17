@@ -50,6 +50,7 @@ export const ListingsServices = {
       `${BASE_API_URL}/auction/listings/${listingId}`,
       'DELETE',
     );
+    console.log(response);
     return response.data;
   },
 
