@@ -42,7 +42,15 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">New listing</a>
+              <button 
+                class="nav-link link-primary"
+                id="new-btn"
+                data-bs-toggle="modal"
+                data-bs-target="#newListingModal"
+                type="button"
+              >
+                New listing
+              </button>
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" href="#">Contact us</a>
@@ -117,7 +125,15 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link link-primary" href="#">New listing</a>
+              <button 
+                class="nav-link link-primary"
+                id="new-btn"
+                data-bs-toggle="modal"
+                data-bs-target="#newListingModal"
+                type="button"
+              >
+                New listing
+              </button>
             </li>
             <li class="nav-item">
               <a class="nav-link link-primary" href="#">Contact us</a>
@@ -222,6 +238,76 @@
         <p class="text-center p-4 text-white">
           BidBlast © 2024. All rights reserved.
         </p>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="newListingModal"
+      tabindex="-1"
+      aria-labelledby="edit"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title" id="edit">BidBlast</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!------------------------ Edit form ------------------------>
+            <form>
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="title"
+                  placeholder="Listing title"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="description" class="form-label"
+                  >Description</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="description"
+                  placeholder="Listing description"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="gallery" class="form-label"
+                  >Image URL</label
+                >
+                <input
+                  type="url"
+                  class="form-control"
+                  id="image-url"
+                  placeholder="Image URL"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="date" class="form-label">Ends at</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="event-date"
+                  placeholder="Choose a date"
+                />
+              </div>
+              <!-------------------------- Update-btn ------------------------->
+              <button type="submit" class="btn btn-primary px-5">
+                Create
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </body>

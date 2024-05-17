@@ -12,12 +12,7 @@ export async function deleteListingController(listing) {
     } catch (e) {
       throw new Error(e);
     } finally {
-      const referrer = document.referrer;
-      if (referrer) {
-        window.location.href = referrer;
-      } else {
-        window.location.href = '/';
-      }
+      window.location.href = '/';
     }
   });
 }

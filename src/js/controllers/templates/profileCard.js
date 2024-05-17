@@ -61,7 +61,7 @@ export function createProfileCard(profile, loggedProfile) {
                 Edit Profile
               </button>
               <button 
-                id="edit-btn"
+                id="new-btn"
                 class="btn btn-secondary px-lg-4 h-75 me-2"
                 data-bs-toggle="modal"
                 data-bs-target="#newListingModal"

@@ -1,6 +1,7 @@
 import { AuthServices } from '../../services/AuthServices';
 import { ListingsServices } from '../../services/ListingsServices';
 import { deleteListingController } from '../actions/deleteListing';
+import { newListingController } from '../actions/newListing';
 import { createSingleListingPage } from '../templates/singleListingPage';
 
 const singleListingContainer = document.querySelector(
@@ -23,6 +24,7 @@ async function displaySingleListing(id) {
         deleteListingController(listings);
       }
     }
+    newListingController();
   } catch (error) {
     console.error('Error displaying single listing:', error);
   }

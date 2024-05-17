@@ -1,4 +1,6 @@
 import { ListingsServices } from '../../services/ListingsServices';
+import { newListingController } from '../actions/newListing';
+import { searchController } from '../actions/search';
 import { createAuctionCard } from '../templates/auctionCard';
 
 const allListingsContainer = document.querySelector('.all-listings');
@@ -8,17 +10,28 @@ const prevPage = document.getElementById('prev-page');
 
 let currentPage = 1;
 
-async function displayAllListings(page) {
+export default async function displayAllListings(page) {
   if (!allListingsContainer) return;
 
   allListingsContainer.innerHTML = '';
+  let listings;
 
   try {
-    const listings = await ListingsServices.getAllListingsPage(page, 12);
+    if (window.location.search.length > 0) {
+      const url = window.location.href;
+      const urlParams = new URLSearchParams(new URL(url).search);
+      const searchParams = urlParams.get('q');
+
+      listings = await ListingsServices.searchListings(searchParams, page, 12);
+    } else {
+      listings = await ListingsServices.getAllListingsPage(page, 12);
+    }
 
     if (listings && listings.length > 0) {
       allListingsContainer.innerHTML = listings.map(createAuctionCard).join('');
     }
+    newListingController();
+    searchController();
   } catch (error) {
     console.error('Error displaying Listings:', error);
   }

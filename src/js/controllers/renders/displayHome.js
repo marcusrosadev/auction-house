@@ -1,7 +1,9 @@
 import { ListingsServices } from '../../services/ListingsServices';
+import { newListingController } from '../actions/newListing';
+import { searchController } from '../actions/search';
 import { createAuctionCard } from '../templates/auctionCard';
 
-async function displayHomeListings() {
+export default async function displayHomeListings() {
   const auctionContainer = document.querySelector('.auction-container');
   const endSoonContainer = document.querySelector('.ending-soon');
   if (!auctionContainer || !endSoonContainer) return;
@@ -37,11 +39,14 @@ async function displayHomeListings() {
       auctionContainer.innerHTML = '<p>No listings found.</p>';
       endSoonContainer.innerHTML = '<p>No listings ending soon.</p>';
     }
+
+    newListingController();
   } catch (error) {
     console.error('Error displaying listings:', error);
     auctionContainer.innerHTML = '<p>Error loading listings.</p>';
     endSoonContainer.innerHTML = '<p>Error loading listings.</p>';
   }
+  searchController();
 }
 
 document.addEventListener('DOMContentLoaded', displayHomeListings);

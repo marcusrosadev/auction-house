@@ -72,4 +72,13 @@ export const ListingsServices = {
     );
     return response.data;
   },
+
+  async searchListings(searchParams, page, limit) {
+    console.log(searchParams)
+    const response = await fetchWithHeaders(
+      `${BASE_API_URL}/auction/listings/search?q=${searchParams}&_active=true&page=${page}&limit=${limit}`,
+      'GET',
+    );
+    return response.data;
+  },
 };
