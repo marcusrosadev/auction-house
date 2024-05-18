@@ -2,6 +2,7 @@ import { ListingsServices } from '../../services/ListingsServices';
 import { newListingController } from '../actions/newListing';
 import { searchController } from '../actions/search';
 import { createAuctionCard } from '../templates/auctionCard';
+import { noItemsFound } from '../templates/noItemsFound';
 
 const allListingsContainer = document.querySelector('.all-listings');
 const nextPage = document.getElementById('next-page');
@@ -29,6 +30,8 @@ export default async function displayAllListings(page) {
 
     if (listings && listings.length > 0) {
       allListingsContainer.innerHTML = listings.map(createAuctionCard).join('');
+    } else {
+      allListingsContainer.innerHTML = noItemsFound();
     }
     newListingController();
     searchController();

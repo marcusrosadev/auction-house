@@ -1,6 +1,7 @@
 import { AuthServices } from '../../services/AuthServices';
 import { ListingsServices } from '../../services/ListingsServices';
 import { deleteListingController } from '../actions/deleteListing';
+import { editListingController } from '../actions/editListing';
 import { newListingController } from '../actions/newListing';
 import { createSingleListingPage } from '../templates/singleListingPage';
 
@@ -25,6 +26,7 @@ async function displaySingleListing(id) {
       }
     }
     newListingController();
+    editListingController(listings);
   } catch (error) {
     console.error('Error displaying single listing:', error);
   }
@@ -55,19 +57,11 @@ async function displaySingleListing(id) {
         alert('Bid submitted successfully!');
         displaySingleListing(id);
       } catch (error) {
-        console.error('Error submitting bid:', error);
-        alert('Failed to submit bid.');
+        alert(error.errors[0].message);
       }
     });
   }
 }
-
-// async function onClickBidButton() {
-//   const bidButton = document.querySelector('#bidButton');
-//   bidButton.addEventListener('click', () => {
-
-//   })
-// }
 
 document.addEventListener('DOMContentLoaded', () => {
   const url = window.location.href;

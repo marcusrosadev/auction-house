@@ -53,7 +53,7 @@ export async function createSingleListingPage(listing) {
                   ></button>
                 </div>
                 <div class="modal-body">
-                  <!------------------------ Edit form ------------------------>
+                  <!------------------------ Bid form ------------------------>
                   <form id="bidForm">
                     <div class="mb-3">
                       <label for="amount" class="form-label"
@@ -66,7 +66,7 @@ export async function createSingleListingPage(listing) {
                         placeholder="$500"
                       />
                     </div>
-                    <!-------------------------- Update-btn ------------------------->
+                    <!-------------------------- Bid-btn ------------------------->
                     <button type="submit" class="btn btn-primary px-5" id="finishBidBtn">
                       Finish Bid
                     </button>
@@ -113,7 +113,7 @@ export async function createSingleListingPage(listing) {
                     </div>
                     <div class="modal-body">
                       <!------------------------ Edit form ------------------------>
-                      <form>
+                      <form id="edit-auction-form">
                         <div class="mb-3">
                           <label for="title" class="form-label">Title</label>
                           <input
@@ -143,15 +143,6 @@ export async function createSingleListingPage(listing) {
                             class="form-control"
                             id="image-url"
                             placeholder="Image URL"
-                          />
-                        </div>
-                        <div class="mb-3">
-                          <label for="date" class="form-label">Ends at</label>
-                          <input
-                            type="date"
-                            class="form-control"
-                            id="event-date"
-                            placeholder="Choose a date"
                           />
                         </div>
                         <!-------------------------- Update-btn ------------------------->

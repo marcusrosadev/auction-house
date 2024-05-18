@@ -6,9 +6,9 @@ export async function searchController() {
     e.preventDefault();
 
     if (searchInput.value !== '') {
-      window.location.href = `/src/pages/listings/?q=${searchInput.value}`
+      window.location.href = `/src/pages/listings/?q=${searchInput.value}`;
     } else {
-      alert('No value to search for.')
+      alert('No value to search for.');
     }
   });
 }

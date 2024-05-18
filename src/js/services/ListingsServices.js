@@ -12,6 +12,16 @@ export const ListingsServices = {
     return response;
   },
 
+  async editListing(ListingData, id) {
+    const response = await fetchWithHeaders(
+      `${BASE_API_URL}/auction/listings/${id}`,
+      'PUT',
+      ListingData,
+    );
+    console.log(response);
+    return response;
+  },
+
   async getAllListings() {
     const response = await fetchWithHeaders(
       `${BASE_API_URL}/auction/listings?_active=true`,
@@ -62,7 +72,12 @@ export const ListingsServices = {
         amount,
       },
     );
-    return response.data;
+
+    if(response.ok) {
+      return response.data;
+    } else {
+      throw response;
+    }
   },
 
   async listingsByProfile(name) {
@@ -74,7 +89,7 @@ export const ListingsServices = {
   },
 
   async searchListings(searchParams, page, limit) {
-    console.log(searchParams)
+    console.log(searchParams);
     const response = await fetchWithHeaders(
       `${BASE_API_URL}/auction/listings/search?q=${searchParams}&_active=true&page=${page}&limit=${limit}`,
       'GET',

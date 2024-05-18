@@ -18,23 +18,19 @@ export const fetchWithHeaders = async (url, method, body) => {
     body: JSON.stringify(body),
   };
   const response = await fetch(url, options);
-  await handleErrors(response);
-  return response.json();
+
+  const responseData = await response.json() 
+  return responseData;
 };
 
-const handleErrors = async (response) => {
-  if (response.ok) return response;
-
-  const errorContent = await response.text(); // Using text to avoid issues if the body is not JSON
-  let errorMessage;
-  try {
-    const errorData = JSON.parse(errorContent);
-    errorMessage =
-      errorData.errors && errorData.errors.length > 0
-        ? errorData.errors[0].message
-        : errorContent; // Default to raw text if parsing fails
-  } catch {
-    errorMessage = errorContent;
-  }
-  throw new Error(`${response.status}: ${errorMessage}`);
-};
+// const handleErrors = async (response) => {
+//   if (response.ok) return response;
+  
+//   const errorContent = await response.json();
+//   let errorMessage;
+//   errorMessage =
+//     errorContent.errors && errorContent.errors.length > 0
+//       ? errorContent.errors[0].message
+//       : errorContent;
+//   throw new Error(`${response.status}: ${errorMessage}`);
+// };
