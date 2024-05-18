@@ -69,8 +69,8 @@ export const ListingsServices = {
         amount,
       },
     );
-
-    if (response.ok) {
+    
+    if (response.data) {
       return response.data;
     } else {
       throw response;

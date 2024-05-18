@@ -4,15 +4,15 @@ import { deleteListingController } from '../actions/deleteListing';
 import { editListingController } from '../actions/editListing';
 import { newListingController } from '../actions/newListing';
 import { createSingleListingPage } from '../templates/singleListingPage';
-// import { createBidsHistory } from './bidHistory';
+import { createBidsHistory } from './bidHistory';
 
 const singleListingContainer = document.querySelector(
   '.container.single-item-listing--container',
 );
 
-// const bidsHistoryContainer = document.querySelector(
-//   '#bid-history-container'
-// )
+const bidsHistoryContainer = document.querySelector(
+  '#bid-history-container'
+)
 
 async function displaySingleListing(id) {
   if (!singleListingContainer) return;
@@ -22,23 +22,22 @@ async function displaySingleListing(id) {
 
   try {
     const listings = await ListingsServices.getListingById(id);
-    // const listingBids = await ListingsServices.getListingBidsById(id);
 
     if (listings) {
       const singleListingHtml = await createSingleListingPage(listings);
+      const bidsHistory = await createBidsHistory(listings);
+      
       singleListingContainer.innerHTML = singleListingHtml;
+      bidsHistoryContainer.innerHTML = bidsHistory;
 
       if (listings.seller.name === currentUser.name) {
         deleteListingController(listings);
         editListingController(listings);
       }
       newListingController();
+
     }
 
-    // if (listingBids) {
-    //   const bidsHistory = await createBidsHistory(listingBids);
-    //   bidsHistoryContainer.innerHTML = bidsHistory;
-    // }
   } catch (error) {
     console.error('Error displaying bids history:', error);
   }
@@ -67,9 +66,13 @@ async function displaySingleListing(id) {
       try {
         await ListingsServices.bidOnListing(id, amount);
         alert('Bid submitted successfully!');
-        displaySingleListing(id);
+        window.location.reload();
       } catch (error) {
-        alert(error.errors[0].message);
+        if(error && error.errors && error.errors.length > 0) {
+          alert(error.errors[0].message);
+        } else {
+          alert('Error to bid')
+        }
       }
     });
   }
