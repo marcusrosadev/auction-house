@@ -9,8 +9,9 @@ export async function createBidsHistory(listing) {
 
   const lastThreeBids = sortedBids.slice(0, 3);
 
-  const bidsHTML = lastThreeBids.map(bid => {
-    return `
+  const bidsHTML = lastThreeBids
+    .map((bid) => {
+      return `
       <div class="col-auto mb-3">
         <div class="card">
           <div class="row g-0 align-items-center justify-content-center">
@@ -18,7 +19,7 @@ export async function createBidsHistory(listing) {
               <img
                 src="${bid.bidder.avatar.url}"
                 class="object-fit-cover ms-md-2 mt-2 mt-md-0"
-                alt="${bid.bidder.avatar.alt || "Profile avatar"}"
+                alt="${bid.bidder.avatar.alt || 'Profile avatar'}"
                 style="width: 3rem; height: 3rem"
               />
             </div>
@@ -32,7 +33,8 @@ export async function createBidsHistory(listing) {
         </div>
       </div>
     `;
-  }).join('');
+    })
+    .join('');
 
   return bidsHTML;
 }

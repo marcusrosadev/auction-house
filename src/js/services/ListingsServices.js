@@ -69,7 +69,7 @@ export const ListingsServices = {
         amount,
       },
     );
-    
+
     if (response.data) {
       return response.data;
     } else {

@@ -10,9 +10,7 @@ const singleListingContainer = document.querySelector(
   '.container.single-item-listing--container',
 );
 
-const bidsHistoryContainer = document.querySelector(
-  '#bid-history-container'
-)
+const bidsHistoryContainer = document.querySelector('#bid-history-container');
 
 async function displaySingleListing(id) {
   if (!singleListingContainer) return;
@@ -26,7 +24,7 @@ async function displaySingleListing(id) {
     if (listings) {
       const singleListingHtml = await createSingleListingPage(listings);
       const bidsHistory = await createBidsHistory(listings);
-      
+
       singleListingContainer.innerHTML = singleListingHtml;
       bidsHistoryContainer.innerHTML = bidsHistory;
 
@@ -35,9 +33,7 @@ async function displaySingleListing(id) {
         editListingController(listings);
       }
       newListingController();
-
     }
-
   } catch (error) {
     console.error('Error displaying bids history:', error);
   }
@@ -68,10 +64,10 @@ async function displaySingleListing(id) {
         alert('Bid submitted successfully!');
         window.location.reload();
       } catch (error) {
-        if(error && error.errors && error.errors.length > 0) {
+        if (error && error.errors && error.errors.length > 0) {
           alert(error.errors[0].message);
         } else {
-          alert('Error to bid')
+          alert('Error to bid');
         }
       }
     });
