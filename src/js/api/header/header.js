@@ -19,13 +19,13 @@ export const fetchWithHeaders = async (url, method, body) => {
   };
   const response = await fetch(url, options);
 
-  const responseData = await response.json() 
+  const responseData = await response.json();
   return responseData;
 };
 
 // const handleErrors = async (response) => {
 //   if (response.ok) return response;
-  
+
 //   const errorContent = await response.json();
 //   let errorMessage;
 //   errorMessage =

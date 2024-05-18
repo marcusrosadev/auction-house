@@ -10,7 +10,7 @@ export async function editListingController(listings) {
   title.value = listings?.title ?? '';
   description.value = listings?.description ?? '';
   image.value = listings?.image?.url ?? '';
-  
+
   editListingForm
     .querySelector('button')
     .addEventListener('click', async (e) => {

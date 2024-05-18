@@ -73,7 +73,7 @@ export const ListingsServices = {
       },
     );
 
-    if(response.ok) {
+    if (response.ok) {
       return response.data;
     } else {
       throw response;
