@@ -281,17 +281,19 @@
                   placeholder="Listing description"
                 />
               </div>
-              <div class="mb-3">
+              <div class="mb-3" id="gallery-container">
                 <label for="gallery" class="form-label"
                   >Image URL</label
                 >
                 <input
                   type="url"
-                  class="form-control"
+                  class="form-control mb-2 image-url"
                   id="image-url"
                   placeholder="Image URL"
+                  name="image-url[]"
                 />
               </div>
+              <button type="button" id="add-image-button" class="btn btn-primary mb-2">+ Add Image</button>
               <div class="mb-3">
                 <label for="date" class="form-label">Ends at</label>
                 <input
