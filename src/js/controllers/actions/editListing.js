@@ -8,10 +8,11 @@ export async function editListingController(listings) {
   title.value = listings?.title ?? '';
   description.value = listings?.description ?? '';
 
-
   let imageCounter = listings.media ? listings.media.length : 0;
   addButton.addEventListener('click', () => {
-    const imageInputs = editListingForm.querySelectorAll('input.edit-image-url');
+    const imageInputs = editListingForm.querySelectorAll(
+      'input.edit-image-url',
+    );
     imageCounter++;
     const newImageUrlInput = document.createElement('input');
     newImageUrlInput.type = 'text';
@@ -24,33 +25,37 @@ export async function editListingController(listings) {
     lastImageInput.parentNode.appendChild(newImageUrlInput);
   });
 
-  editListingForm.querySelector('button[type="submit"]').addEventListener('click', async (e) => {
-    e.preventDefault();
+  editListingForm
+    .querySelector('button[type="submit"]')
+    .addEventListener('click', async (e) => {
+      e.preventDefault();
 
-    const imageInputs = editListingForm.querySelectorAll('input.edit-image-url');
-    const images = [];
-    imageInputs.forEach(input => {
-      if (input.value) {
-        images.push({
-          url: input.value,
-          alt: 'Listing Image'
-        });
+      const imageInputs = editListingForm.querySelectorAll(
+        'input.edit-image-url',
+      );
+      const images = [];
+      imageInputs.forEach((input) => {
+        if (input.value) {
+          images.push({
+            url: input.value,
+            alt: 'Listing Image',
+          });
+        }
+      });
+
+      if (!title.value) {
+        alert('Create a title!');
+        return;
       }
+
+      const newListingData = {
+        title: title.value,
+        description: description.value,
+        media: images,
+        endsAt: listings.endsAt,
+      };
+
+      await ListingsServices.editListing(newListingData, listings.id);
+      window.location.reload();
     });
-
-    if (!title.value) {
-      alert('Create a title!');
-      return;
-    }
-
-    const newListingData = {
-      title: title.value,
-      description: description.value,
-      media: images,
-      endsAt: listings.endsAt
-    };
-
-    await ListingsServices.editListing(newListingData, listings.id);
-    window.location.reload();
-  });
 }

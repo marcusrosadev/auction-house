@@ -4,10 +4,15 @@ import { deleteListingController } from '../actions/deleteListing';
 import { editListingController } from '../actions/editListing';
 import { newListingController } from '../actions/newListing';
 import { createSingleListingPage } from '../templates/singleListingPage';
+// import { createBidsHistory } from './bidHistory';
 
 const singleListingContainer = document.querySelector(
   '.container.single-item-listing--container',
 );
+
+// const bidsHistoryContainer = document.querySelector(
+//   '#bid-history-container'
+// )
 
 async function displaySingleListing(id) {
   if (!singleListingContainer) return;
@@ -17,6 +22,8 @@ async function displaySingleListing(id) {
 
   try {
     const listings = await ListingsServices.getListingById(id);
+    // const listingBids = await ListingsServices.getListingBidsById(id);
+
     if (listings) {
       const singleListingHtml = await createSingleListingPage(listings);
       singleListingContainer.innerHTML = singleListingHtml;
@@ -27,8 +34,13 @@ async function displaySingleListing(id) {
       }
       newListingController();
     }
+
+    // if (listingBids) {
+    //   const bidsHistory = await createBidsHistory(listingBids);
+    //   bidsHistoryContainer.innerHTML = bidsHistory;
+    // }
   } catch (error) {
-    console.error('Error displaying single listing:', error);
+    console.error('Error displaying bids history:', error);
   }
 
   const amountInput = document.querySelector('.form-control.amount-input');

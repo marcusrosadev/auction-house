@@ -19,8 +19,11 @@ export async function createSingleListingPage(listing) {
   const currentUserName = currentUser?.name ?? '';
   const currentUserEmail = currentUser?.email ?? '';
 
-  const imageInputs = listing.media.length > 0 ? 
-    listing.media.map((image, index) => `
+  const imageInputs =
+    listing.media.length > 0
+      ? listing.media
+          .map(
+            (image, index) => `
       <input
         type="text"
         class="form-control mb-2 edit-image-url"
@@ -28,8 +31,10 @@ export async function createSingleListingPage(listing) {
         placeholder="Image URL"
         name="edit-image-url[]"
         value="${image.url}"
-      />`
-    ).join('') : `
+      />`,
+          )
+          .join('')
+      : `
       <input
         type="text"
         class="form-control mb-2 edit-image-url"
@@ -142,7 +147,7 @@ export async function createSingleListingPage(listing) {
                             class="form-control"
                             id="title"
                             placeholder="Listing title"
-                            value=${ listing ? listing.title : ''}
+                            value=${listing ? listing.title : ''}
                           />
                         </div>
                         <div class="mb-3">
@@ -154,7 +159,7 @@ export async function createSingleListingPage(listing) {
                             class="form-control"
                             id="description"
                             placeholder="Listing description"
-                            value=${ listing.description ? listing.description : ''}
+                            value=${listing.description ? listing.description : ''}
                           />
                         </div>
                         <div class="mb-3 id="edit-gallery-container">
