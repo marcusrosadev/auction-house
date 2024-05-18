@@ -21,20 +21,19 @@ export async function newListingController() {
       const imageInputs = newListingForm.querySelectorAll('input.image-url');
       const images = [];
 
-      imageInputs.forEach(input => {
-          if(input.value) {
-            images.push({
-              url: input.value || '',
-              alt: 'Listing Image'
-            });
-          }
+      imageInputs.forEach((input) => {
+        if (input.value) {
+          images.push({
+            url: input.value || '',
+            alt: 'Listing Image',
+          });
+        }
       });
 
       if (!title && !endsAt) {
         alert('Create a title and set an end date!');
         return;
       }
-      console.log(images)
       const newListingData = {
         title: title.value ?? '',
         description: description.value ?? '',

@@ -8,7 +8,6 @@ export const ListingsServices = {
       'POST',
       ListingData,
     );
-    console.log(response);
     return response;
   },
 
@@ -18,7 +17,6 @@ export const ListingsServices = {
       'PUT',
       ListingData,
     );
-    console.log(response);
     return response;
   },
 
@@ -60,7 +58,6 @@ export const ListingsServices = {
       `${BASE_API_URL}/auction/listings/${listingId}`,
       'DELETE',
     );
-    console.log(response);
     return response.data;
   },
 
@@ -89,7 +86,6 @@ export const ListingsServices = {
   },
 
   async searchListings(searchParams, page, limit) {
-    console.log(searchParams);
     const response = await fetchWithHeaders(
       `${BASE_API_URL}/auction/listings/search?q=${searchParams}&_active=true&page=${page}&limit=${limit}`,
       'GET',

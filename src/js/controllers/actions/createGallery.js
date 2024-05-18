@@ -4,8 +4,8 @@ export function setupDynamicImageFields() {
     const addButton = document.querySelector('#add-image-button');
     const galleryContainer = document.querySelector('#gallery-container');
     let imageCounter = 1;
-  
-    if(addButton && galleryContainer) {
+
+    if (addButton && galleryContainer) {
       addButton.addEventListener('click', () => {
         imageCounter++;
         const newImageUrlInput = document.createElement('input');
@@ -14,13 +14,13 @@ export function setupDynamicImageFields() {
         newImageUrlInput.id = `image-url-${imageCounter}`;
         newImageUrlInput.placeholder = 'Image URL';
         newImageUrlInput.name = 'image-url[]';
-    
+
         galleryContainer.appendChild(newImageUrlInput);
       });
     }
   });
 }
 
-(function() {
+(function () {
   setupDynamicImageFields();
 })();

@@ -23,10 +23,10 @@ async function displaySingleListing(id) {
 
       if (listings.seller.name === currentUser.name) {
         deleteListingController(listings);
+        editListingController(listings);
       }
+      newListingController();
     }
-    newListingController();
-    editListingController(listings);
   } catch (error) {
     console.error('Error displaying single listing:', error);
   }

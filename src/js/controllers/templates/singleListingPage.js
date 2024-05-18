@@ -18,6 +18,27 @@ export async function createSingleListingPage(listing) {
   const currentUser = AuthServices.getCurrentUser();
   const currentUserName = currentUser?.name ?? '';
   const currentUserEmail = currentUser?.email ?? '';
+
+  const imageInputs = listing.media.length > 0 ? 
+    listing.media.map((image, index) => `
+      <input
+        type="text"
+        class="form-control mb-2 edit-image-url"
+        id="image-url-${index}"
+        placeholder="Image URL"
+        name="edit-image-url[]"
+        value="${image.url}"
+      />`
+    ).join('') : `
+      <input
+        type="text"
+        class="form-control mb-2 edit-image-url"
+        id="image-url"
+        placeholder="Image URL"
+        name="edit-image-url[]"
+      />
+    `;
+
   return `
     <!-------------------------------- Seller-profile ------------------------------>
     <div class="row d-flex justify-content-center mb-4">
@@ -121,6 +142,7 @@ export async function createSingleListingPage(listing) {
                             class="form-control"
                             id="title"
                             placeholder="Listing title"
+                            value=${ listing ? listing.title : ''}
                           />
                         </div>
                         <div class="mb-3">
@@ -132,19 +154,14 @@ export async function createSingleListingPage(listing) {
                             class="form-control"
                             id="description"
                             placeholder="Listing description"
+                            value=${ listing.description ? listing.description : ''}
                           />
                         </div>
-                        <div class="mb-3">
-                          <label for="gallery" class="form-label"
-                            >Image URL</label
-                          >
-                          <input
-                            type="url"
-                            class="form-control"
-                            id="image-url"
-                            placeholder="Image URL"
-                          />
+                        <div class="mb-3 id="edit-gallery-container">
+                          <label for="gallery" class="form-label">Image URL</label>
+                          ${imageInputs}
                         </div>
+                        <div id="add-image-button-edit" class="btn btn-primary mb-2 d-block">+ Add Image</div>
                         <!-------------------------- Update-btn ------------------------->
                         <button type="submit" class="btn btn-primary px-5">
                           Update
