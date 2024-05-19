@@ -1,7 +1,13 @@
+import createFeedbackPopup from '../functions/feedback';
+
 export const storage = {
   setItem(key, value) {
     if (value === undefined) {
-      console.error(`Attempted to store 'undefined' for key: ${key}`);
+      createFeedbackPopup(
+        `Attempted to store 'undefined' for key: ${key}`,
+        'error',
+      );
+
       return; // Prevent storing 'undefined'
     }
     localStorage.setItem(key, JSON.stringify(value));
@@ -10,8 +16,11 @@ export const storage = {
     const item = localStorage.getItem(key);
     try {
       return item ? JSON.parse(item) : null;
-    } catch (e) {
-      console.error(`Error parsing JSON from localStorage for key: ${key}`, e);
+    } catch (error) {
+      createFeedbackPopup(
+        `Error parsing JSON from localStorage for key: ${key} -> ${error}`,
+        'error',
+      );
       return null;
     }
   },

@@ -1,5 +1,6 @@
 import { AuthServices } from '../../services/AuthServices';
 import { ListingsServices } from '../../services/ListingsServices';
+import createFeedbackPopup from '../../utils/functions/feedback';
 import { newListingController } from '../actions/newListing';
 import { updateProfileController } from '../actions/profile';
 import { createProfileCard } from '../templates/profileCard';
@@ -41,7 +42,11 @@ async function displayProfile() {
     updateProfileController();
     newListingController();
   } catch (error) {
-    console.error('Error displaying profile:', error);
+    if (error && error.errors && error.errors.length > 0) {
+      createFeedbackPopup(error.errors[0].message, 'error');
+    } else {
+      createFeedbackPopup('Error to load profile', 'error');
+    }
   }
 }
 

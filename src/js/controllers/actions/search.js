@@ -1,3 +1,5 @@
+import createFeedbackPopup from '../../utils/functions/feedback';
+
 export async function searchController() {
   const searchInput = document.querySelector('input#search');
   const searchBtn = document.querySelector('button#search-btn');
@@ -8,7 +10,7 @@ export async function searchController() {
     if (searchInput.value !== '') {
       window.location.href = `/src/pages/listings/?q=${searchInput.value}`;
     } else {
-      alert('No value to search for.');
+      createFeedbackPopup('No value to search for.', 'error');
     }
   });
 }

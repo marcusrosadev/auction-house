@@ -8,7 +8,11 @@ export const ListingsServices = {
       'POST',
       ListingData,
     );
-    return response;
+    if (response.data) {
+      return response.data;
+    } else {
+      throw response;
+    }
   },
 
   async editListing(ListingData, id) {
@@ -17,7 +21,11 @@ export const ListingsServices = {
       'PUT',
       ListingData,
     );
-    return response;
+    if (response.data) {
+      return response.data;
+    } else {
+      throw response;
+    }
   },
 
   async getAllListings() {
@@ -25,7 +33,11 @@ export const ListingsServices = {
       `${BASE_API_URL}/auction/listings?_active=true`,
       'GET',
     );
-    return response.data;
+    if (response.data) {
+      return response.data;
+    } else {
+      throw response;
+    }
   },
 
   async getAllListingsPage(page, limit) {
@@ -33,7 +45,11 @@ export const ListingsServices = {
       `${BASE_API_URL}/auction/listings?_active=true&page=${page}&limit=${limit}`,
       'GET',
     );
-    return response.data;
+    if (response.data) {
+      return response.data;
+    } else {
+      throw response;
+    }
   },
 
   async getListingById(listingId) {
@@ -41,7 +57,11 @@ export const ListingsServices = {
       `${BASE_API_URL}/auction/listings/${listingId}?_seller=true&_bids=true`,
       'GET',
     );
-    return response.data;
+    if (response.data) {
+      return response.data;
+    } else {
+      throw response;
+    }
   },
 
   async updateListing(listingId, listingData) {
@@ -50,7 +70,11 @@ export const ListingsServices = {
       'PUT',
       listingData,
     );
-    return response.data;
+    if (response.data) {
+      return response.data;
+    } else {
+      throw response;
+    }
   },
 
   async deleteListing(listingId) {
@@ -58,7 +82,11 @@ export const ListingsServices = {
       `${BASE_API_URL}/auction/listings/${listingId}`,
       'DELETE',
     );
-    return response.data;
+    if (response.data) {
+      return response.data;
+    } else {
+      throw response;
+    }
   },
 
   async bidOnListing(listingId, amount) {
@@ -82,7 +110,11 @@ export const ListingsServices = {
       `${BASE_API_URL}/auction/profiles/${name}/listings`,
       'GET',
     );
-    return response.data;
+    if (response.data) {
+      return response.data;
+    } else {
+      throw response;
+    }
   },
 
   async searchListings(searchParams, page, limit) {
@@ -90,6 +122,10 @@ export const ListingsServices = {
       `${BASE_API_URL}/auction/listings/search?q=${searchParams}&_active=true&page=${page}&limit=${limit}`,
       'GET',
     );
-    return response.data;
+    if (response.data) {
+      return response.data;
+    } else {
+      throw response;
+    }
   },
 };

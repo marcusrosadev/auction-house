@@ -1,5 +1,6 @@
 import { AuthServices } from '../../services/AuthServices';
 import { ListingsServices } from '../../services/ListingsServices';
+import createFeedbackPopup from '../../utils/functions/feedback';
 import { deleteListingController } from '../actions/deleteListing';
 import { editListingController } from '../actions/editListing';
 import { newListingController } from '../actions/newListing';
@@ -35,7 +36,11 @@ async function displaySingleListing(id) {
       newListingController();
     }
   } catch (error) {
-    console.error('Error displaying bids history:', error);
+    if (error && error.errors && error.errors.length > 0) {
+      createFeedbackPopup(error.errors[0].message, 'error');
+    } else {
+      createFeedbackPopup('Error to load single auction', 'error');
+    }
   }
 
   const amountInput = document.querySelector('.form-control.amount-input');
@@ -55,19 +60,19 @@ async function displaySingleListing(id) {
       e.preventDefault();
       const amount = parseInt(amountInput.value.replace(/[, $]/g, ''), 10);
       if (Number.isNaN(amount)) {
-        alert('Please enter a valid bid amount.');
+        createFeedbackPopup('Please enter a valid bid amount.', 'error');
         return;
       }
 
       try {
         await ListingsServices.bidOnListing(id, amount);
-        alert('Bid submitted successfully!');
+        createFeedbackPopup('Bid submitted successfully!', 'success');
         window.location.reload();
       } catch (error) {
         if (error && error.errors && error.errors.length > 0) {
-          alert(error.errors[0].message);
+          createFeedbackPopup(error.errors[0].message, 'error');
         } else {
-          alert('Error to bid');
+          createFeedbackPopup('Error to bid', 'error');
         }
       }
     });

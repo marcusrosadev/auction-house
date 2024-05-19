@@ -1,5 +1,6 @@
 // import { AuthServices } from '../../services/AuthServices.js';
 import { ListingsServices } from '../../services/ListingsServices.js';
+import createFeedbackPopup from '../../utils/functions/feedback.js';
 
 export async function newListingController() {
   // const currentUser = await AuthServices.getCurrentUser();
@@ -30,10 +31,6 @@ export async function newListingController() {
         }
       });
 
-      if (!title && !endsAt) {
-        alert('Create a title and set an end date!');
-        return;
-      }
       const newListingData = {
         title: title.value ?? '',
         description: description.value ?? '',
@@ -41,7 +38,15 @@ export async function newListingController() {
         endsAt: endsAt.value ?? new Date(),
       };
 
-      await ListingsServices.createListing(newListingData);
-      // window.location.reload();
+      try {
+        await ListingsServices.createListing(newListingData);
+        // window.location.reload();
+      } catch (error) {
+        if (error && error.errors && error.errors.length > 0) {
+          createFeedbackPopup(error.errors[0].message, 'error');
+        } else {
+          createFeedbackPopup('Error to create auction', 'error');
+        }
+      }
     });
 }

@@ -1,4 +1,5 @@
 import { AuthServices } from '../../services/AuthServices';
+import createFeedbackPopup from '../../utils/functions/feedback';
 
 export function registerController() {
   const registerForm = document.querySelector('#registerModal form');
@@ -18,9 +19,13 @@ export function registerController() {
         password: userData.password,
       });
       window.location.reload();
-      alert('Registration Successful');
+      createFeedbackPopup('Registration Successful', 'success');
     } catch (error) {
-      alert('Error during registration: ' + error.message);
+      if (error && error.errors && error.errors.length > 0) {
+        createFeedbackPopup(error.errors[0].message, 'error');
+      } else {
+        createFeedbackPopup('Error to register account', 'error');
+      }
     } finally {
       document.querySelector('#registerModal'); //make loading
     }

@@ -1,4 +1,5 @@
 import { ListingsServices } from '../../services/ListingsServices';
+import createFeedbackPopup from '../../utils/functions/feedback';
 import { newListingController } from '../actions/newListing';
 import { searchController } from '../actions/search';
 import { createAuctionCard } from '../templates/auctionCard';
@@ -42,9 +43,11 @@ export default async function displayHomeListings() {
 
     newListingController();
   } catch (error) {
-    console.error('Error displaying listings:', error);
-    auctionContainer.innerHTML = '<p>Error loading listings.</p>';
-    endSoonContainer.innerHTML = '<p>Error loading listings.</p>';
+    if (error && error.errors && error.errors.length > 0) {
+      createFeedbackPopup(error.errors[0].message, 'error');
+    } else {
+      createFeedbackPopup('Error to list auctions', 'error');
+    }
   }
   searchController();
 }

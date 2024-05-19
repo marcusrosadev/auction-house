@@ -1,4 +1,5 @@
 import { AuthServices } from '../../services/AuthServices.js';
+import createFeedbackPopup from '../../utils/functions/feedback.js';
 
 export async function updateProfileController() {
   const currentUser = await AuthServices.getCurrentUser();
@@ -24,7 +25,7 @@ export async function updateProfileController() {
       loggedProfile.avatar.url === avatarInput.value &&
       loggedProfile.banner.url === bannerInput.value
     ) {
-      alert('To confirm you have to change something');
+      createFeedbackPopup('You have to change something', 'error');
       return;
     }
 
@@ -40,7 +41,16 @@ export async function updateProfileController() {
       },
     };
 
-    await AuthServices.updateProfile(loggedProfile.name, profileData);
-    window.location.reload();
+    try {
+      await AuthServices.updateProfile(loggedProfile.name, profileData);
+      createFeedbackPopup('Profile updated successfully', 'success');
+      window.location.reload();
+    } catch (error) {
+      if (error && error.errors && error.errors.length > 0) {
+        createFeedbackPopup(error.errors[0].message, 'error');
+      } else {
+        createFeedbackPopup('Error to update profile', 'error');
+      }
+    }
   });
 }

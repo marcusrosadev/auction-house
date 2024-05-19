@@ -1,4 +1,5 @@
 import { ListingsServices } from '../../services/ListingsServices.js';
+import createFeedbackPopup from '../../utils/functions/feedback.js';
 
 export async function editListingController(listings) {
   const editListingForm = document.querySelector('form#edit-auction-form');
@@ -43,11 +44,6 @@ export async function editListingController(listings) {
         }
       });
 
-      if (!title.value) {
-        alert('Create a title!');
-        return;
-      }
-
       const newListingData = {
         title: title.value,
         description: description.value,
@@ -55,7 +51,15 @@ export async function editListingController(listings) {
         endsAt: listings.endsAt,
       };
 
-      await ListingsServices.editListing(newListingData, listings.id);
-      window.location.reload();
+      try {
+        await ListingsServices.editListing(newListingData, listings.id);
+        window.location.reload();
+      } catch (error) {
+        if (error && error.errors && error.errors.length > 0) {
+          createFeedbackPopup(error.errors[0].message, 'error');
+        } else {
+          createFeedbackPopup('Error to edit', 'error');
+        }
+      }
     });
 }

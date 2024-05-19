@@ -14,8 +14,13 @@ export const AuthServices = {
       'POST',
       userData,
     );
-    currentUser(response.data);
-    return response;
+
+    if (response.data) {
+      currentUser(response.data);
+      return response;
+    } else {
+      throw response;
+    }
   },
 
   async login(credentials) {
@@ -24,8 +29,12 @@ export const AuthServices = {
       'POST',
       credentials,
     );
-    currentUser(response.data);
-    return response;
+    if (response.data) {
+      currentUser(response.data);
+      return response;
+    } else {
+      throw response;
+    }
   },
 
   logout: () => {
@@ -58,6 +67,10 @@ export const AuthServices = {
       'PUT',
       profileData,
     );
-    return response.data;
+    if (response.data) {
+      return response.data;
+    } else {
+      throw response;
+    }
   },
 };
