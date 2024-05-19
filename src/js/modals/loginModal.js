@@ -1,8 +1,6 @@
-/* global $ */
-$(document).ready(function () {
-  $('#login-modal-container').load('/src/pages/login/', function () {
-    loginController();
-  });
+/* global */
+document.addEventlistener('DomContentLoaded', function () {
+  loginController();
 });
 
 import { loginController } from '../controllers/auth/loginController';

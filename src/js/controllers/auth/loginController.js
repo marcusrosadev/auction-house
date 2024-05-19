@@ -3,29 +3,31 @@ import createFeedbackPopup from '../../utils/functions/feedback';
 import { updateButtonVisibility } from '../actions/logged';
 
 export function loginController() {
-  const loginForm = document.querySelector('#loginModal form');
+  document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.querySelector('#loginModal form');
+    console.log(loginForm);
+    loginForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
 
-  loginForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
+      const credentials = {
+        email: document.getElementById('email-login').value.trim(),
+        password: document.getElementById('password-login').value,
+      };
 
-    const credentials = {
-      email: document.getElementById('email-login').value.trim(),
-      password: document.getElementById('password-login').value,
-    };
-
-    try {
-      await AuthServices.login(credentials);
-      window.location.reload();
-      createFeedbackPopup('Login Successful', 'success');
-      updateButtonVisibility();
-    } catch (error) {
-      if (error && error.errors && error.errors.length > 0) {
-        createFeedbackPopup(error.errors[0].message, 'error');
-      } else {
-        createFeedbackPopup('Error to update profile', 'error');
+      try {
+        await AuthServices.login(credentials);
+        window.location.reload();
+        createFeedbackPopup('Login Successful', 'success');
+        updateButtonVisibility();
+      } catch (error) {
+        if (error && error.errors && error.errors.length > 0) {
+          createFeedbackPopup(error.errors[0].message, 'error');
+        } else {
+          createFeedbackPopup('Error to update profile', 'error');
+        }
+      } finally {
+        document.querySelector('#loginModal'); //make loading function
       }
-    } finally {
-      document.querySelector('#loginModal'); //make loading function
-    }
+    });
   });
 }
